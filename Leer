@@ -1,0 +1,6 @@
+* la url para entrar al test es  http://localhost/test/
+* los txt generados se guardan en la carpeta "library"
+* las imagenes se guardan en la carpeta "img"
+* para obtener los datos guardados anteriormente de un empleado en la url se tiene que escribir lo siguiente:
+  ?IdEmpleado=xxx  donde las xxx son el id del empleado guardado
+* las librerias no se descargaron, se usan liberarias en linea
