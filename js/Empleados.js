@@ -28,28 +28,33 @@ $(document).ready(function () {
         $('#idempleado').val(idEmpleado);
         abrir_txt(idEmpleado);
     }
+    $('#rfc').mask('LLLLNNNNNNAAA', 
+    {
+        'translation': {
+            L: { pattern: /[A-Za-z]/ },
+            N: { pattern: /[0-9]/ },
+            A: { pattern: /[A-Za-z0-9]/ },
+        },
+        'placeholder': 'XXXX999999'
+    });
 
-    $('#rfc').mask('AAAA000000',
-        {
-            placeholder: "XXXX999999"
+    $('#curp').mask('LLLLNNNNNNLLLLLLAAA', 
+    {
+        'translation': {
+            L: { pattern: /[A-Za-z]/ },
+            N: { pattern: /[0-9]/ },
+            A: { pattern: /[A-Za-z0-9]/ },
         },
-        {
-            A: { pattern: /^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$/ },
-        });
-    $('#curp').mask('AAAA000000AAAAAA00',
-        {
-            placeholder: "XXXX999999XXXXXX99"
+        'placeholder': "AAAA000000AAAAAA00"
+    });
+    $('#numerointenrior').mask('NNNL', 
+    {
+        'translation': {
+            N: { pattern: /[0-9]/ },
+            L: { pattern: /[A-Za-z]/ },
         },
-        {
-            A: { pattern: /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/ },
-        });
-    $('#numerointenrior').mask('0000A',
-        {
-            placeholder: "0000A"
-        },
-        {
-            A: { pattern: /"^\d{3,4}[a-zA-Z]?$"/ },
-        });
+        'placeholder': "000A"
+    });
 });
 
 let estudios = [];
@@ -232,11 +237,11 @@ $("#empleados").submit(function (event) {
                 console.log(response);
                 Swal.fire({
                     title: 'Guardado',
-                    text: "El empleado fue guardado correctamente con ID "+response.idEmpleado,
+                    text: "El empleado fue guardado correctamente con ID " + response.idEmpleado,
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                 }).then((result) => {
-                    window.location = 'index.php?IdEmpleado='+response.idEmpleado;
+                    window.location = 'index.php?IdEmpleado=' + response.idEmpleado;
                 })
             }
         });
@@ -266,7 +271,7 @@ function abrir_txt(id) {
             $('#ApellidoP').val(datos['datosgenerales'].ApellidoP);
             $('#ApellidoM').val(datos['datosgenerales'].ApellidoM);
             // $('#sexo').val(datos['datosgenerales'].sexo);
-            $('#sexo').select2("val",datos['datosgenerales'].sexo);
+            $('#sexo').select2("val", datos['datosgenerales'].sexo);
             $('#fechanacimiento').val(datos['datosgenerales'].fechanacimiento);
             $('#numeroempleado').val(datos['datosgenerales'].numeroempleado);
             $('#numeropension').val(datos['datosgenerales'].numeropension);
@@ -277,14 +282,14 @@ function abrir_txt(id) {
 
             $('#curp').val(datos['datosadicionales'].curp);
             $('#rfc').val(datos['datosadicionales'].rfc);
-            $('#estadocivil').select2("val",datos['datosadicionales'].estadocivil);
-            $('#tiposangre').select2("val",datos['datosadicionales'].tiposangre);
+            $('#estadocivil').select2("val", datos['datosadicionales'].estadocivil);
+            $('#tiposangre').select2("val", datos['datosadicionales'].tiposangre);
             $('#estatura').val(datos['datosadicionales'].estatura);
             $('#peso').val(datos['datosadicionales'].peso);
-            $('#complexion').select2("val",datos['datosadicionales'].complexion);
-            $('#discapacidad').select2("val",datos['datosadicionales'].discapacidad);
-            
-            $('#pais').select2("val",datos['domicilio'].pais);
+            $('#complexion').select2("val", datos['datosadicionales'].complexion);
+            $('#discapacidad').select2("val", datos['datosadicionales'].discapacidad);
+
+            $('#pais').select2("val", datos['domicilio'].pais);
             getestados();
             $('#estado').val(datos['domicilio'].estado)
             getmunicipios();
