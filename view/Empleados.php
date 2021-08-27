@@ -21,8 +21,8 @@
                     <input type="text" class="form-control" placeholder="Apellido Materno" name="ApellidoM" id="ApellidoM" maxlength="40" required></input>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="">Sexo<span class="text-danger">*</span></label>
-                    <select name="sexo" id="sexo" class="form-control select2" required>
+                    <label class="col-xs-12">Sexo<span class="text-danger">*</span></label>
+                    <select name="sexo" id="sexo" class="form-control select2 col-xs-12 col-md-12" required>
                         <option value="">Seleccionar...</option>
                         <?php echo llenarSelect($sexo) ?>
                     </select>
@@ -71,15 +71,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="">Estado Civil<span class="text-danger">*</span></label>
-                    <select name="estadocivil" id="estadocivil" class="form-control select2" required>
+                    <label class="col-xs-12">Estado Civil<span class="text-danger">*</span></label>
+                    <select name="estadocivil" id="estadocivil" class="form-control select2 col-xs-12 col-md-12" required>
                         <option value="">Seleccionar...</option>
                         <?php echo llenarSelect($estadocivil) ?>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="">Tipo Sangre<span class="text-danger">*</span></label>
-                    <select name="tiposangre" id="tiposangre" class="form-control select2" required>
+                    <label class="col-xs-12">Tipo Sangre<span class="text-danger">*</span></label>
+                    <select name="tiposangre" id="tiposangre" class="form-control select2 col-xs-12 col-md-12" required>
                         <option value="">Seleccionar...</option>
                         <?php echo llenarSelect($tiposangre) ?>
                     </select>
@@ -97,15 +97,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="">Complexion<span class="text-danger">*</span></label>
-                    <select name="complexion" id="complexion" class="form-control select2" required>
+                    <label class="col-xs-12">Complexion<span class="text-danger">*</span></label>
+                    <select name="complexion" id="complexion" class="form-control select2 col-xs-12 col-md-12" required>
                         <option value="">Seleccionar...</option>
                         <?php echo llenarSelect($complexion) ?>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="">Discapacidad</label>
-                    <select name="discapacidad" id="discapacidad" class="form-control select2">
+                    <label class="col-xs-12">Discapacidad</label>
+                    <select name="discapacidad" id="discapacidad" class="form-control select2 col-xs-12 col-md-12">
                         <option value="">Seleccionar...</option>
                         <?php echo llenarSelect($discapacidad) ?>
                     </select>
@@ -118,37 +118,37 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="">Pais<span class="text-danger">*</span></label>
-                    <select name="pais" id="pais" class="form-control select2" onchange="getestados()" required>
+                    <label class="col-xs-12">Pais<span class="text-danger">*</span></label>
+                    <select name="pais" id="pais" class="form-control select2 col-xs-12 col-md-12" onchange="getestados()" required>
                         <option value="">Seleccionar...</option>
                         <?php echo llenarSelect($paises) ?>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="">Estado<span class="text-danger">*</span></label>
-                    <select name="estado" id="estado" class="form-control select2" onchange="getmunicipios()" required>
+                    <label class="col-xs-12">Estado<span class="text-danger">*</span></label>
+                    <select name="estado" id="estado" class="form-control select2 col-xs-12 col-md-12" onchange="getmunicipios()" required>
                         <option value="">Seleccionar...</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="">Municipio<span class="text-danger">*</span></label>
-                    <select name="municipio" id="municipio" class="form-control select2" onchange="getlocalidad()" required>
+                    <label class="col-xs-12">Municipio<span class="text-danger">*</span></label>
+                    <select name="municipio" id="municipio" class="form-control select2 col-xs-12 col-md-12" onchange="getlocalidad()" required>
                         <option value="">Seleccionar...</option>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="">Localidad<span class="text-danger">*</span></label>
-                    <select name="localidad" id="localidad" class="form-control select2" onchange="getColonia()" required>
+                    <label class="col-xs-12">Localidad<span class="text-danger">*</span></label>
+                    <select name="localidad" id="localidad" class="form-control select2 col-xs-12 col-md-12" onchange="getColonia()" required>
                         <option value="">Seleccionar...</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="">Colonia<span class="text-danger">*</span></label>
-                    <select name="colonia" id="colonia" class="form-control select2" required>
+                    <label class="col-xs-12">Colonia<span class="text-danger">*</span></label>
+                    <select name="colonia" id="colonia" class="form-control select2 col-xs-12 col-md-12" required>
                         <option value="">Seleccionar...</option>
                     </select>
                 </div>
@@ -184,8 +184,8 @@
                     <input class="form-control" placeholder="Escuela" id="escuela"></input>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="">Grado Estudio<span class="text-danger">*</span></label>
-                    <select id="gradoestudio" class="form-control" ">
+                    <label class="col-xs-12">Grado Estudio<span class="text-danger">*</span></label>
+                    <select id="gradoestudio" name="gradoestudio" class="form-control col-xs-12 col-md-12">
                             <option value="">Seleccionar...</option>                            
                                 <?php echo llenarSelect($estudios) ?>                            
                         </select>

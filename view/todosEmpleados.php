@@ -5,6 +5,7 @@
     <table class="table">
         <thead>
             <tr>                
+                <th class="textCenter">ID Empleado</th>
                 <th class="textCenter">Nombre</th>
                 <th class="textCenter">Sexo</th>
                 <th class="textCenter">Fecha Nacimiento</th>

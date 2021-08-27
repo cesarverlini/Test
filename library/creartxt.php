@@ -63,6 +63,7 @@ if ($_POST['Nombre'] != "" && $_POST['ApellidoP'] != "" && $_POST['ApellidoM'] !
     if ($idEmpleado > 0) {
         $file = $idEmpleado.'.txt';
     } else {
+        $idEmpleado = $id_aleatorio;
         $file = $id_aleatorio.'.txt';
     }
     $directorio = '../empleados';
@@ -72,9 +73,7 @@ if ($_POST['Nombre'] != "" && $_POST['ApellidoP'] != "" && $_POST['ApellidoM'] !
         fopen($directorio.'/index.html','w+');
     }
     $datos_json = file_put_contents($directorio.'/'.$file, $json_string);
-    // header('Location: ' . '../Index.php');
-    // header('Content-type: application/json; charset=utf-8');
-    echo json_encode(array('type'=>'successs','mensaje'=>'guardado correctamente'));
+    echo json_encode(array('type'=>'successs','mensaje'=>'guardado correctamente','idEmpleado'=>$idEmpleado));
 } else {
     echo "<span style='color: red;'>Por favor, Ingrese los datos requeridos. </span></br></br>";
 }

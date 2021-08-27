@@ -10,10 +10,20 @@ $(document).ready(function () {
             abrir_txt(v);
         });
     }
+    
+    let idEmpleado = getParameterByName('IdEmpleado');
+    if (idEmpleado) {
+        window.location = 'index.php?IdEmpleado=' + idEmpleado;
+    }
 
 
 });
-
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 function abrir_txt(id) {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', 'empleados/' + id + '.txt');
@@ -28,15 +38,16 @@ function abrir_txt(id) {
             let estatura = datos['datosadicionales'].estatura;
             let peso = datos['datosadicionales'].peso;
 
-            let data = { 
+            let data = {
                 'sexoTxt': datos['datosgenerales'].sexo,
                 'tipoSangreTxt': datos['datosadicionales'].tiposangre
-            };            
+            };
             let res = cargar_ajax.run_server_ajax('model/Catalogo.php', data);
             let sexo = res.sexo;
             let tiposangre = res.tipoSangre;
             $('#tablaEmpleados').append(
                 '<tr>' +
+                '<td>' + id + '</td>' +
                 '<td>' + Nombre + ' ' + ApellidoP + ' ' + ApellidoM + '</td>' +
                 '<td>' + sexo + '</td>' +
                 '<td>' + fechanacimiento + '</td>' +

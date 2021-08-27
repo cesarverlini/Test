@@ -23,10 +23,10 @@ $(document).ready(function () {
         results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
-    var prodId = getParameterByName('IdEmpleado');
-    if (prodId) {
-        $('#idempleado').val(prodId);
-        abrir_txt(prodId);
+    let idEmpleado = getParameterByName('IdEmpleado');
+    if (idEmpleado) {
+        $('#idempleado').val(idEmpleado);
+        abrir_txt(idEmpleado);
     }
 
     $('#rfc').mask('AAAA000000',
@@ -161,7 +161,7 @@ function previewImage(event) {
 
 function agregarEstudio() {
     let escuela = $('#escuela').val();
-    let gradoestudio = $('#gradoestudio').val();
+    let gradoestudio = $('#gradoestudio option:selected').text();
     let fechainicio = $('#fechainicio').val();
     let fechafin = $('#fechafin').val();
 
@@ -172,7 +172,7 @@ function agregarEstudio() {
             '<td>' + gradoestudio + '</td>' +
             '<td>' + fechainicio + '</td>' +
             '<td>' + fechafin + '</td>' +
-            '<td style="text-align:center"><span class="btn btn-danger" onclick="quitarEstudio(' + i + ')">-</span></td>' +
+            '<td style="text-align:center"><span class="btn btn-danger glyphicon glyphicon-trash" onclick="quitarEstudio(' + i + ')"></span></td>' +
             '</tr>'
         );
         var data = {
@@ -232,11 +232,11 @@ $("#empleados").submit(function (event) {
                 console.log(response);
                 Swal.fire({
                     title: 'Guardado',
-                    text: "El empleado fue guardado correctamente",
+                    text: "El empleado fue guardado correctamente con ID "+response.idEmpleado,
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                 }).then((result) => {
-                    // window.location = 'index.php';
+                    window.location = 'index.php?IdEmpleado='+response.idEmpleado;
                 })
             }
         });
@@ -262,7 +262,6 @@ function abrir_txt(id) {
         if (this.readyState == 4 && this.status == 200) {
 
             var datos = JSON.parse(this.responseText);
-            console.log(datos['estudios']);
             $('#Nombre').val(datos['datosgenerales'].Nombre);
             $('#ApellidoP').val(datos['datosgenerales'].ApellidoP);
             $('#ApellidoM').val(datos['datosgenerales'].ApellidoM);
@@ -275,7 +274,6 @@ function abrir_txt(id) {
             if (datos['datosgenerales'].fotografia != "") {
                 $('#imagefield').attr('src', "img/" + datos['datosgenerales'].fotografia);
             }
-            console.log(datos['datosadicionales']);
 
             $('#curp').val(datos['datosadicionales'].curp);
             $('#rfc').val(datos['datosadicionales'].rfc);
@@ -286,7 +284,6 @@ function abrir_txt(id) {
             $('#complexion').select2("val",datos['datosadicionales'].complexion);
             $('#discapacidad').select2("val",datos['datosadicionales'].discapacidad);
             
-            console.log(datos['domicilio']);
             $('#pais').select2("val",datos['domicilio'].pais);
             getestados();
             $('#estado').val(datos['domicilio'].estado)
@@ -310,7 +307,7 @@ function abrir_txt(id) {
                         '<td>' + v.GradoEstudio + '</td>' +
                         '<td>' + v.FechaInicio + '</td>' +
                         '<td>' + v.FechaFin + '</td>' +
-                        '<td style="text-align:center"><span class="btn btn-danger" onclick="quitarEstudio(' + i + ')">-</span></td>' +
+                        '<td style="text-align:center"><span class="btn btn-danger glyphicon glyphicon-trash" onclick="quitarEstudio(' + i + ')"></span></td>' +
                         '</tr>'
                     );
                 }
